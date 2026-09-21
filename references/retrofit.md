@@ -20,7 +20,7 @@
 - 按通用原则逐个判断：性质（文档/工件）、归属（AI 产物/用户原创）、破坏面（有无外部引用）
 - 常见情形参考（不是穷举，以原则为准）：
   - 知识类文档 → `docs/notes/`，一主题一文件；同主题多篇归堆成目录
-  - 状态类（进度、TODO、计划）→ 提炼当前态进 `docs/status.md`，历史不搬
+  - 状态类（进度、TODO、计划）→ 提炼当前态进 `docs/status.md`。**仅当项目有可读 git 历史时**才丢弃旧状态（历史可回溯）；无 git 历史、或 commit message 无意义时，整份先归档 `docs/legacy/` 再提炼，避免唯一记录被销毁
   - 规范类 → 归并进 `docs/conventions.md`
   - 非纯文本文档（PDF / Office / 图片）→ 不转换，`docs/attachments/` 原样归档 + 索引登记引用
   - 工程工件 → 按项目惯例目录归位（sql、scripts、config 等）
@@ -43,4 +43,4 @@
 
 ### 4. 收尾
 
-按 SKILL.md「收尾检查」执行，额外确认：旧文件均有归属（归位/登记/legacy 三者之一），索引指向与实际位置一致。提醒用户 commit。
+按 SKILL.md「收尾检查」执行，额外确认：旧文件均有归属（归位/登记/legacy 三者之一），索引指向与实际位置一致；文档进不进 git 尚未确认的，按 bootstrap.md 第 4 步问明并设置 `.gitignore`。提醒用户 commit。

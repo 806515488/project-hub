@@ -35,12 +35,15 @@ notes/ 下的文件按项目实际主题创建，不预建空文件。
 
 ### 4. .gitignore 安全检查
 
+- **先问用户：这套文档进不进 git？**（本机私有 / 团队共享）
+  - **不进** → 把产物整体加入 `.gitignore`：`PROJECT.md`、`docs/`、以及各工具入口文件（`CLAUDE.md`、`AGENTS.md`、`GEMINI.md`、`.cursor/`、`.github/copilot-instructions.md`、`.windsurf/`、`.clinerules`）。否则它们会一直挂在 `git status` 的未跟踪列表里，有被误提交的风险
+  - **进** → 不做此步；后续规则中凡涉及"历史/对账"的表述按文档进 git 理解
 - 确认排除各 AI 工具的本地配置与凭据：`.claude/settings.local.json` 等 local 类文件、各工具凭据/缓存目录
 - 检查待提交内容中有无密钥（token、密码、`.env` 等），有则加入 .gitignore 并提醒用户
 
 ### 5. 填充真实内容
 
-- status.md：扫描项目现状填写「当前状态」
+- status.md：扫描项目现状填写「当前状态」；顶部对账锚点的 `<sha>` 替换为当前提交（`git rev-parse --short HEAD`），项目尚无 git 历史则整行删除
 - conventions.md：从 pom.xml / package.json / 现有代码风格归纳工具链与约定，样板示例从现有代码中挑一段贴入
 
 ### 6. 收尾
